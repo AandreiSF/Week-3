@@ -1,0 +1,151 @@
+HTML code
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQs</title>
+  <!-- font-awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+
+  <!-- styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <main class="questions">
+    <div>
+
+      <!-- title -->
+      <div class="title">
+        <h2>FAQs</h2>
+      </div>
+      <!-- questions -->
+      <div class="section-center">
+        <article class="question">
+          <div class="question-title">
+            <p>How many legs an ant have?.</p>
+            <button type="button" class="question-btn">
+              <span class="plus-icon">
+                <i class="far fa-plus-square"></i>
+              </span>
+            </button>
+          </div>
+          <p class="question-text">
+            Six legs.
+          </p>
+        </article>
+        <article class="question">
+          <!-- question title -->
+          <div class="question-title">
+            <p>Ho do you measure the voltage?</p>
+            <button type="button" class="question-btn">
+              <span class="plus-icon">
+                <i class="far fa-plus-square"></i>
+              </span>
+            </button>
+          </div>
+          <!-- question text -->
+          <div class="question-text">
+            <p>
+             You measure the voltage with voltmeter.
+            </p>
+          </div>
+        </article>
+        <article class="question">
+          <!-- question title -->
+          <div class="question-title">
+            <p>What is sun?</p>
+            <!-- button -->
+            <button type="button" class="question-btn">
+              <span class="plus-icon">
+                <i class="far fa-plus-square"></i>
+              </span>
+            </button>
+          </div>
+          <!-- question text -->
+          <div class="question-text">
+            <p>
+             Sun is a star
+             
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+  <!-- javascript -->
+  <script src="app.js"></script>
+</body>
+
+</html>
+
+	Java Script code:
+const questions = document.querySelectorAll(".question");
+
+questions.forEach(function (question) {
+  const btn = question.querySelector(".question-btn");
+  const questionText = question.querySelector(".question-text");
+
+  btn.addEventListener("click", function () {
+    console.log(btn);
+    questionText.classList.toggle("show-text");
+    questions.forEach(function (item) {
+      if (item !== question) {
+        item.classList.remove("show-text");
+      }
+    });
+  });
+});
+
+
+CSS code:
+.questions {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+.section-center{
+  width: 60vw;
+  margin: 0 auto;
+}
+
+.question{
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin-bottom: 1rem;
+}
+
+.question-title{
+  display: flex;
+  justify-content: space-between;
+}
+
+.question-btn{
+  background: transparent;
+  border-color: transparent;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+}
+
+.question-text{
+  display: none;
+}
+
+.show-text{
+  display: block;
+}
+
+The link of the output of the code:
+https://jsfiddle.net/ue4x5w1k/
+
