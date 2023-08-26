@@ -1,0 +1,86 @@
+import React, { useState } from "react";
+
+const App = () => {
+  const styles = {
+    products: {
+      display: "flex",
+      flexWrap: "wrap"
+    },
+    product: {
+      border: "1px solid #eee",
+      padding: "10px",
+      margin: "10px",
+      minWidth: "150px"
+    },
+    button: {
+      padding: "5px 10px",
+      marginTop: "10px",
+      cursor: "pointer"
+    },
+    cart: {
+      marginTop: "20px",
+      borderTop: "1px solid #eee",
+      paddingTop: "10px"
+    },
+    cartItem: {
+      borderBottom: "1px solid #eee",
+      padding: "5px 0"
+    }
+  };
+
+  const tshirts = [
+    { id: 1, size: "S", color: "Red", price: 15 },
+    { id: 2, size: "M", color: "Red", price: 16 },
+    { id: 3, size: "L", color: "Red", price: 17 },
+    { id: 4, size: "S", color: "Blue", price: 18 },
+    { id: 5, size: "M", color: "Blue", price: 19 },
+    { id: 6, size: "L", color: "Blue", price: 20 }
+  ];
+
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (tshirt) => {
+    setCart((prevCart) => [...prevCart, tshirt]);
+  };
+
+  const totalCost = cart.reduce((acc, curr) => acc + curr.price, 0);
+
+  return (
+    <div>
+      <h1>T-shirt Shop</h1>
+      <div style={styles.products}>
+        {tshirts.map((tshirt) => (
+          <div key={tshirt.id} style={styles.product}>
+            <p>Size: {tshirt.size}</p>
+            <p>Color: {tshirt.color}</p>
+            <p>Price: ${tshirt.price}</p>
+            <button style={styles.button} onClick={() => addToCart(tshirt)}>
+              Add to Cart
+
+            </button>
+          </div>
+        ))}
+      </div>
+      <div style={styles.cart}>
+        <h2>Your Cart</h2>
+        {cart.map((item, index) => (
+          <div key={index} style={styles.cartItem}>
+            <p>Size: {item.size}</p>
+            <p>Color: {item.color}</p>
+            <p>Price: ${item.price}</p>
+          </div>
+        ))}
+        <strong>Total: ${totalCost}</strong>
+      </div>
+    </div>
+  );
+};
+
+export default App; 
+
+For the output I used the Codesandbox
+
+
+
+
+
